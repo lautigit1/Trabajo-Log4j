@@ -16,18 +16,17 @@ dependencies {
     // Starter base
     implementation 'org.springframework.boot:spring-boot-starter'
 
-    // Dependencia para controladores web (RestController, etc.)
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    // Usamos Log4j2 en lugar de Logback
+
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 
-    // Opcional: otros layouts para Log4j2
-    // implementation 'org.apache.logging.log4j:log4j-layout-template-json:2.20.0'
+
 }
 
 configurations {
-    // Excluir Logback que Spring Boot incluye por defecto
+
     all {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
