@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.ejemplo'
+version = '1.0.0'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Starter base
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    // Dependencia para controladores web (RestController, etc.)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Usamos Log4j2 en lugar de Logback
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+
+    // Opcional: otros layouts para Log4j2
+    // implementation 'org.apache.logging.log4j:log4j-layout-template-json:2.20.0'
+}
+
+configurations {
+    // Excluir Logback que Spring Boot incluye por defecto
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

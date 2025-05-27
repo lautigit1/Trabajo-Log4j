@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c{1} - %m%n</Property>
+        <Property name="LOG_FILE">logs/log.txt</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Consola simple -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+
+        <!-- Consola con formato HTML -->
+        <Console name="HtmlConsole" target="SYSTEM_OUT">
+            <HTMLLayout />
+        </Console>
+
+        <!-- Archivo de texto -->
+        <File name="LogFile" fileName="${LOG_FILE}">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </File>
+
+        <!-- Rolling File: rota cada 2 minutos -->
+        <RollingFile name="RollingFile" fileName="logs/app-log.log"
+                     filePattern="logs/app-log-%d{MM-dd-yyyy-HH-mm}.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="2" modulate="true" />
+            </Policies>
+        </RollingFile>
+
+        <!-- Cron rolling file: rota a una hora específica (por ejemplo, cada día a las 18:00) -->
+        <RollingFile name="CronRollingFile" fileName="logs/cron-log.log"
+                     filePattern="logs/cron-log-%d{MM-dd-yyyy-HH-mm}.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <CronTriggeringPolicy schedule="0 0 18 * * ?" />
+            </Policies>
+        </RollingFile>
+
+        <!-- Logger HTTP simulado (requiere implementación específica con Http appender personalizado) -->
+        <!-- Este es un placeholder y debe ser complementado con código Java que envíe logs por HTTP -->
+        <!-- <Http name="HttpAppender" url="http://localhost:8080/log" method="POST" /> -->
+
+    </Appenders>
+
+    <Loggers>
+        <!-- Nivel personalizado miLogLevel -->
+        <Logger name="milog" level="INFO" additivity="false">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="LogFile" />
+            <AppenderRef ref="RollingFile" />
+            <AppenderRef ref="CronRollingFile" />
+        </Logger>
+
+        <!-- Root logger con consola HTML -->
+        <Root level="INFO">
+            <AppenderRef ref="HtmlConsole" />
+        </Root>
+    </Loggers>
+</Configuration>

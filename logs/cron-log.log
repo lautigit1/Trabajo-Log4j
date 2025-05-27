@@ -1,0 +1,12 @@
+2025-05-26 22:34:42 [INFO ] milog - La aplicación se ha iniciado.
+2025-05-26 22:34:42 [INFO ] milog - Mensaje con nivel personalizado (miLogLevel simulado).
+2025-05-26 22:34:42 [INFO ] milog - Mensaje enviado a consola.
+2025-05-26 22:34:42 [WARN ] milog - Mensaje enviado a log.txt y archivo rotativo.
+2025-05-26 22:34:42 [INFO ] milog - Probando appender con HTMLLayout en consola.
+2025-05-26 22:34:42 [INFO ] milog - Este mensaje debería verse en un archivo rotado cada 2 minutos.
+2025-05-26 22:34:42 [INFO ] milog - Este mensaje va al archivo con rotación por cron.
+2025-05-26 22:34:42 [INFO ] milog - Formato A: %d [%-6p] %c{1} - %m%n
+2025-05-26 22:34:42 [INFO ] milog - Formato B: %sn %d{yyyy/MM/dd HH:mm:ss,SSS} %r [%-6p] [%t] %c{3} %C{3}.%M(%F:%L) - %m%n
+2025-05-26 22:34:42 [INFO ] milog - Ejercicio B.8a → %d [%-6p] %c{1} - %m%n
+2025-05-26 22:34:42 [INFO ] milog - Ejercicio B.8b → %sn %d{yyyy/MM/dd HH:mm:ss,SSS} %r [%-6p] [%t] %c{3} %C{3}.%M(%F:%L) - %m%n
+2025-05-26 22:34:42 [INFO ] milog - Mensaje con contexto (ThreadContext): usuario y operación.
